@@ -61,7 +61,6 @@ public class Character : MonoBehaviour
 		float jumpForce = 10f;
 		RaycastHit hit;
 		Physics.Raycast (transform.position, transform.TransformDirection (Vector3.down), out hit, Mathf.Infinity);
-		print (hit.distance);
 		bool isGrounded = (hit.distance - ((gameObject.GetComponent<BoxCollider>().size.y / 2) + 0.5f)) <= 0f;
 
 		if (isGrounded && Input.GetButtonDown("Jump")) {
