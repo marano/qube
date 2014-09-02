@@ -36,14 +36,14 @@ public class CameraPositionScript : MonoBehaviour
 
 	void FollowUser()
 	{
-			float speed = 15f;
-		
-				float xTarget = player.position.x;
-				float yTarget = player.position.y + cameraHeight;
-				float zTarget = player.position.z;
-				
-				transform.position = new Vector3 (xTarget, yTarget, zTarget);
-		
+			float speed = 5f;
+//		
+//				float xTarget = player.position.x;
+//				float yTarget = player.position.y + cameraHeight;
+//				float zTarget = player.position.z;
+//				
+//				transform.position = new Vector3 (xTarget, yTarget, zTarget);
+//		
 		//		float xPositionModifier = 0f;
 		//		float zPositionModifier = 0f;
 		//
@@ -87,11 +87,11 @@ public class CameraPositionScript : MonoBehaviour
 		
 		//		float speed2 = 10f;
 		
-//		float xTarget = player.position.x;
-//		float yTarget = player.position.y + cameraHeight;
-//		float zTarget = player.position.z;
-//		//		
-//		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (xTarget, yTarget, zTarget), speed * Time.deltaTime);
+		float xTarget = player.position.x;
+		float yTarget = player.position.y + cameraHeight;
+		float zTarget = player.position.z;
+		//		
+		transform.position = Vector3.MoveTowards(transform.position, new Vector3 (xTarget, yTarget, zTarget), speed * Time.deltaTime);
 		
 		//		rigidbody.velocity = new Vector3 (xVelocity, rigidbody.velocity.y, zVelocity);
 		

@@ -7,21 +7,22 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	  if (Input.GetButtonDown ("Fire1"))
 	  {
-			float shootForce = 100f;
-
-			rigidbody.AddForce (new Vector3(1,2,3), ForceMode.Impulse);
-
-			GameObject bullet = (GameObject) Instantiate(bulletPrefab, transform.position, transform.rotation);
-//			rigidbody.addForce(new Vector3(Vector3.right, 0f, 0f), ForceMode.Impulse);
-			bullet.rigidbody.addForce(new Vector3(1,2,3), ForceMode.Impulse);
-
+			float shootForce = 5f;
+			float spawnDistance = 0.6f;
+			Rigidbody bullet = Instantiate(bulletPrefab,
+			                               transform.position + spawnDistance * transform.forward,
+			                               transform.rotation) as Rigidbody;
+			bullet.AddForce(bullet.transform.forward * shootForce, ForceMode.Impulse);
 	  }
+	}
+
+	void OnCollisionEnter(Collision collision) {
+
 	}
 }
