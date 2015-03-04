@@ -29,31 +29,31 @@ public class Character : MonoBehaviour
 		float yForce = 0;
 		float zForce = verticalMove * (totalMovement == 0f ? 0.7071f : (positiveVerticalMove / totalMovement)) * moveForce;
 
-		if (xForce < 0 && rigidbody.velocity.x > 0) {
-			rigidbody.velocity = new Vector3 (0f, rigidbody.velocity.y, rigidbody.velocity.z);
+		if (xForce < 0 && GetComponent<Rigidbody>().velocity.x > 0) {
+			GetComponent<Rigidbody>().velocity = new Vector3 (0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
 		}
-		else if (xForce > 0 && rigidbody.velocity.x < 0)
+		else if (xForce > 0 && GetComponent<Rigidbody>().velocity.x < 0)
 		{
-			rigidbody.velocity = new Vector3 (0f, rigidbody.velocity.y, rigidbody.velocity.z);
+			GetComponent<Rigidbody>().velocity = new Vector3 (0f, GetComponent<Rigidbody>().velocity.y, GetComponent<Rigidbody>().velocity.z);
 		}
 		
-		if (zForce < 0 && rigidbody.velocity.z > 0) {
-			rigidbody.velocity = new Vector3 (rigidbody.velocity.x, rigidbody.velocity.y, 0f);
+		if (zForce < 0 && GetComponent<Rigidbody>().velocity.z > 0) {
+			GetComponent<Rigidbody>().velocity = new Vector3 (GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0f);
 		}
-		else if (zForce > 0 && rigidbody.velocity.z < 0)
+		else if (zForce > 0 && GetComponent<Rigidbody>().velocity.z < 0)
 		{
-			rigidbody.velocity = new Vector3 (rigidbody.velocity.x, rigidbody.velocity.y, 0f);
+			GetComponent<Rigidbody>().velocity = new Vector3 (GetComponent<Rigidbody>().velocity.x, GetComponent<Rigidbody>().velocity.y, 0f);
 		}
 
-		if (rigidbody.velocity.x > maxSpeed || rigidbody.velocity.x < -maxSpeed) {
+		if (GetComponent<Rigidbody>().velocity.x > maxSpeed || GetComponent<Rigidbody>().velocity.x < -maxSpeed) {
 			xForce = 0;
 		}
 		
-		if (rigidbody.velocity.z > maxSpeed || rigidbody.velocity.z < -maxSpeed) {
+		if (GetComponent<Rigidbody>().velocity.z > maxSpeed || GetComponent<Rigidbody>().velocity.z < -maxSpeed) {
 			zForce = 0;
 		}
 
-		rigidbody.AddForce (new Vector3(xForce, yForce, zForce), ForceMode.Impulse);
+		GetComponent<Rigidbody>().AddForce (new Vector3(xForce, yForce, zForce), ForceMode.Impulse);
 	}
 
 	void handleJump()
@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
 		bool isGrounded = (hit.distance - ((gameObject.GetComponent<BoxCollider>().size.y / 2) + 0.5f)) <= 0f;
 
 		if (isGrounded && Input.GetButtonDown("Jump")) {
-			rigidbody.AddForce (new Vector3 (0, jumpForce, 0), ForceMode.Impulse);
+			GetComponent<Rigidbody>().AddForce (new Vector3 (0, jumpForce, 0), ForceMode.Impulse);
 		}
 	}
 
